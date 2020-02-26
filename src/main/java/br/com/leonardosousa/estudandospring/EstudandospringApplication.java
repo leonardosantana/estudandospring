@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class EstudandospringApplication {
 
-	@Value("teste123")
+	@Value("${teste123}")
 	private Long teste123;
 
 	public static void main(String[] args) {
@@ -17,5 +17,9 @@ public class EstudandospringApplication {
 	}
 
 	@Bean
-	CommandLineRunner
+	public CommandLineRunner commandLineRunner(){
+		return args ->{
+			System.out.println("teste123= " +  this.teste123);
+		};
+	}
 }
