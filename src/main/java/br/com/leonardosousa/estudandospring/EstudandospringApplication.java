@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import sun.font.Script;
 
 @SpringBootApplication
 public class EstudandospringApplication {
@@ -19,7 +21,12 @@ public class EstudandospringApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(){
 		return args ->{
-			System.out.println("teste123= " +  this.teste123);
+			String crypt = new BCryptPasswordEncoder().encode("12345");
+			String crypt2 = new BCryptPasswordEncoder().encode("12345");
+
+			System.out.println("cript= " + crypt + " senha é " + new BCryptPasswordEncoder().matches("12345", crypt));
+			System.out.println("cript2= " + crypt2 + " senha é " + new BCryptPasswordEncoder().matches("12345", crypt2));
+
 		};
 	}
 }
